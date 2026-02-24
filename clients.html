@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="logoto.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Доволни Клиенти - AdictBarbershop</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<header>
+    
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="logo">
+    <div class="logo-wrapper">
+    <img src="logoto.png" alt="Barber Logo" class="logo-img">
+</div>
+<div class="barber-pole">
+    <div class="pole-top"></div>
+    <div class="pole-body">
+        <div class="pole-inner"></div>
+    </div>
+    <div class="pole-bottom"></div>
+</div>
+<h2>AdictBarbershop</h2>
+</div>
+
+<nav id="nav">
+<ul>
+<li><a href="index.html">Начало</a></li>
+<li><a href="services.html">Подстрижки</a></li>
+<li><a href="clients.html">Клиенти</a></li>
+<li><a href="contact.html">Контакт</a></li>
+</ul>
+</nav>
+</header>
+
+<section><br><br>
+<h1 style="text-shadow:0 0 20px blue;">Доволни Клиенти</h1><br>
+
+<div class="video-card">
+    <video src="cut3.mp4" class="client-video" autoplay
+       muted
+       loop
+       playsinline></video>
+</div>
+
+<div class="video-card">
+    <video src="cutvideo.mp4" class="client-video" autoplay
+       muted
+       loop
+       playsinline></video>
+</div>
+
+</section>
+
+<footer>
+© 2026 AdictBarbershop
+</footer>
+<div class="video-lightbox" id="videoLightbox">
+    <span class="close-video">&times;</span>
+    <video id="lightboxVideo" autoplay muted playsinline></video>
+</div>
+<script>
+const videos = document.querySelectorAll(".client-video");
+const videoLightbox = document.getElementById("videoLightbox");
+const lightboxVideo = document.getElementById("lightboxVideo");
+const closeVideo = document.querySelector(".close-video");
+
+videos.forEach(video => {
+    video.addEventListener("click", () => {
+        videoLightbox.style.display = "flex";
+        lightboxVideo.src = video.src;
+
+        lightboxVideo.muted = true;   // 👈 винаги без звук
+        lightboxVideo.play();
+    });
+});
+
+closeVideo.addEventListener("click", () => {
+    videoLightbox.style.display = "none";
+    lightboxVideo.pause();
+    lightboxVideo.currentTime = 0;
+});
+</script>
+</body>
+</html>
