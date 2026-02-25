@@ -1,0 +1,980 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+z-index:1000;
+box-shadow:0 0 20px red;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+font-size:20px;
+color:white;
+text-shadow:0 0 10px blue;
+}
+
+/* 3D Barber Pole */
+.pole{
+width:50px;
+height:50px;
+border-radius:50%;
+background:white;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+perspective:100px;
+}
+
+.pole::before{
+content:"";
+width:35px;
+height:35px;
+border-radius:50%;
+background:repeating-linear-gradient(
+45deg,
+red 0px,
+red 10px,
+white 10px,
+white 20px,
+blue 20px,
+blue 30px
+);
+animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+position:relative;
+padding:5px 10px;
+transition:0.3s;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:3px;
+background:red;
+transition:0.4s;
+box-shadow:0 0 10px red;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+nav a:hover{
+text-shadow:0 0 15px blue;
+}
+
+section{
+min-height:100vh;
+padding:120px 10%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* HERO VIDEO */
+.hero{
+position:relative;
+color:white;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+filter:brightness(0.4);
+}
+
+.hero h1{
+font-size:60px;
+text-shadow:0 0 20px red;
+}
+
+.price{
+font-size:70px;
+color:#00aaff;
+text-shadow:0 0 20px #00aaff;
+margin:20px 0;
+}
+
+.btn{
+padding:15px 40px;
+border:none;
+border-radius:40px;
+background:transparent;
+color:white;
+font-size:18px;
+cursor:pointer;
+border:2px solid red;
+box-shadow:0 0 15px red;
+transition:0.3s;
+}
+
+.btn:hover{
+background:red;
+box-shadow:0 0 40px red;
+transform:scale(1.1);
+}
+
+.card{
+background:#111;
+padding:30px;
+margin:20px;
+border-radius:20px;
+box-shadow:0 0 20px blue;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px red;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+box-shadow:0 0 20px blue;
+}
+
+/* Responsive */
+@media(max-width:768px){
+nav ul{
+flex-direction:column;
+position:absolute;
+right:20px;
+top:70px;
+background:#111;
+padding:20px;
+border-radius:15px;
+display:none;
+}
+
+nav.active ul{
+display:flex;
+}
+}
+/* Движещ се неон */
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+z-index:1000;
+border:3px solid transparent;
+border-radius:15px;
+background-clip:padding-box;
+}
+
+header::before{
+content:"";
+position:absolute;
+top:-3px;
+left:-3px;
+right:-3px;
+bottom:-3px;
+border-radius:15px;
+background:linear-gradient(
+90deg,
+red,
+blue,
+white,
+red
+);
+background-size:300%;
+z-index:-1;
+animation:neonMove 4s linear infinite;
+}
+
+@keyframes neonMove{
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+.btn{
+position:relative;
+padding:15px 40px;
+background:#000;
+color:white;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:18px;
+overflow:hidden;
+z-index:1;
+}
+
+.btn::before{
+content:"";
+position:absolute;
+top:-2px;
+left:-2px;
+right:-2px;
+bottom:-2px;
+border-radius:40px;
+background:linear-gradient(
+90deg,
+red,
+blue,
+white,
+red
+);
+background-size:300%;
+z-index:-1;
+animation:neonMove 3s linear infinite;
+}
+.card{
+background:#111;
+padding:30px;
+margin:20px;
+border-radius:20px;
+position:relative;
+z-index:1;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:-2px;
+left:-2px;
+right:-2px;
+bottom:-2px;
+border-radius:20px;
+background:linear-gradient(
+90deg,
+blue,
+red,
+white,
+blue
+);
+background-size:300%;
+z-index:-1;
+animation:neonMove 5s linear infinite;
+}
+/* === REAL 3D BARBER POLE === */
+
+.barber-pole{
+width:45px;
+display:flex;
+flex-direction:column;
+align-items:center;
+perspective:500px;
+}
+
+/* Горна метална капачка */
+.pole-top,
+.pole-bottom{
+width:45px;
+height:10px;
+background:linear-gradient(to bottom,#aaa,#444);
+border-radius:5px;
+box-shadow:0 0 10px #999;
+}
+
+/* Основно тяло */
+.pole-body{
+width:35px;
+height:70px;
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+position:relative;
+box-shadow:
+inset 0 0 15px rgba(0,0,0,0.6),
+0 0 15px rgba(255,255,255,0.3);
+}
+
+/* Вътрешната въртяща се част */
+.pole-inner{
+position:absolute;
+width:100%;
+height:200%;
+background:repeating-linear-gradient(
+45deg,
+#d40000 0px,
+#d40000 15px,
+#ffffff 15px,
+#ffffff 30px,
+#007bff 30px,
+#007bff 45px
+);
+animation:poleSpin 2s linear infinite;
+}
+
+/* Анимация */
+@keyframes poleSpin{
+0%{ transform:translateY(0); }
+100%{ transform:translateY(-50%); }
+}
+h1, h2{
+font-family: 'UnifrakturCook', cursive;
+font-size:60px;
+letter-spacing:2px;
+}
+.menu-btn{
+display:none;
+font-size:30px;
+color:white;
+cursor:pointer;
+text-shadow:0 0 10px red;
+}
+
+/* Мобилен режим */
+@media(max-width:768px){
+
+.menu-btn{
+display:block;
+}
+
+nav{
+position:absolute;
+top:80px;
+right:20px;
+width:220px;
+background:#111;
+border-radius:15px;
+padding:20px;
+transform:translateY(-20px);
+opacity:0;
+pointer-events:none;
+transition:0.4s ease;
+box-shadow:0 0 20px red;
+}
+
+nav ul{
+flex-direction:column;
+gap:20px;
+}
+
+nav.active{
+transform:translateY(0);
+opacity:1;
+pointer-events:auto;
+}
+
+/* По-малък текст */
+nav a{
+font-size:16px;
+}
+
+h1{
+font-size:32px;
+}
+
+.price{
+font-size:40px;
+}
+
+.btn{
+font-size:14px;
+padding:12px 25px;
+}
+}
+body{
+background:#0a0a0a;
+color:white;
+font-size:clamp(13px, 2vw, 16px);
+}
+nav a{
+font-size:clamp(14px, 2vw, 18px);
+}
+h1{
+font-size:clamp(26px, 6vw, 60px);
+}
+
+h2{
+font-size:clamp(18px, 4vw, 32px);
+}
+.price{
+font-size:clamp(32px, 8vw, 70px);
+}
+.btn{
+font-size:clamp(13px, 2vw, 18px);
+padding:clamp(10px, 2vw, 15px) clamp(20px, 4vw, 40px);
+}
+/* === BARBER IMAGE SECTION === */
+
+.barber-section{
+margin-top:60px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+}
+
+/* Неон рамка */
+.barber-img{
+position:relative;
+padding:4px;
+border-radius:25px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+}
+
+.barber-img img{
+width:280px;
+height:280px;
+object-fit:cover;
+border-radius:20px;
+display:block;
+}
+
+/* Мото */
+.moto{
+font-size:clamp(18px, 4vw, 28px);
+text-shadow:
+0 0 10px red,
+0 0 20px blue;
+letter-spacing:2px;
+}
+.barber-name{
+position:absolute;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.6);
+padding:8px 20px;
+border-radius:15px;
+font-size:clamp(14px, 3vw, 20px);
+letter-spacing:2px;
+text-transform:uppercase;
+color:white;
+text-shadow:
+0 0 10px red,
+0 0 20px blue,
+0 0 30px white;
+backdrop-filter:blur(5px);
+}
+@media (max-width:768px){
+
+.hero h1{
+font-size:22px;
+line-height:1.3;
+letter-spacing:1px;
+padding:0 15px;
+}
+
+}
+.cut-image{
+width:280px;
+height:280px;
+object-fit:cover;
+display:block;
+margin:0 auto 30px auto;
+border-radius:25px;
+padding:4px;
+
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+}
+.contact-section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:#0a0a0a;
+}
+
+.contact-title{
+font-size:clamp(28px, 6vw, 50px);
+margin-bottom:50px;
+text-shadow:0 0 20px red, 0 0 40px blue;
+}
+
+/* Контейнър */
+.contact-cards{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+/* Карти */
+.contact-card{
+width:180px;
+height:180px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:white;
+border-radius:25px;
+position:relative;
+overflow:hidden;
+background:rgba(20,20,20,0.8);
+backdrop-filter:blur(10px);
+transition:0.4s;
+}
+
+/* Неон рамка */
+.contact-card::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:25px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+}
+
+/* Икони */
+.contact-card i{
+font-size:50px;
+margin-bottom:15px;
+text-shadow:0 0 15px red, 0 0 25px blue;
+transition:0.4s;
+}
+
+/* Hover ефект */
+.contact-card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 30px red, 0 0 50px blue;
+}
+
+.contact-card:hover i{
+transform:scale(1.2) rotate(5deg);
+}
+
+/* Текст */
+.contact-text{
+margin-top:50px;
+font-size:clamp(14px, 2vw, 18px);
+opacity:0.8;
+}@media (max-width:768px){
+
+.contact-card{
+width:130px;
+height:130px;
+}
+
+.contact-card i{
+font-size:35px;
+}
+
+.contact-cards{
+gap:20px;
+}
+
+}
+.hero{
+position:relative;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+filter:brightness(40%);
+}
+.hero-title{
+font-size:clamp(28px, 6vw, 60px);
+margin-bottom:50px;
+text-shadow:
+0 0 20px red,
+0 0 40px blue;
+}
+.cards-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+padding:20px;
+}
+.card{
+position:relative;
+background:#111;
+padding:25px;
+width:280px;
+border-radius:25px;
+text-align:center;
+overflow:hidden;
+transition:0.4s;
+}
+
+/* Neon border */
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:25px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+}
+.cut-image{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:15px;
+}
+.price{
+color:#00aaff;
+text-shadow:0 0 15px #00aaff;
+font-weight:bold;
+font-size:20px;
+}
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px red, 0 0 50px blue;
+}
+@media (max-width:768px){
+
+.cards-container{
+gap:20px;
+}
+
+.card{
+width:90%;
+}
+
+}@media (max-width:768px){
+
+.cards-container{
+gap:20px;
+}
+
+.card{
+width:90%;
+}
+
+}
+@keyframes neonMove{
+0%{ background-position:0% 50%; }
+100%{ background-position:300% 50%; }
+}
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.lightbox img{
+max-width:80%;
+max-height:80%;
+border-radius:25px;
+position:relative;
+padding:4px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+}
+
+/* X бутон */
+.close-btn{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+text-shadow:0 0 15px red, 0 0 30px blue;
+}
+@media (max-width:768px){
+.lightbox img{
+max-width:95%;
+max-height:70%;
+}
+}
+.video-card{
+position:relative;
+width:300px;
+border-radius:25px;
+overflow:hidden;
+margin:30px;
+}
+
+/* Neon border */
+.video-card::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:25px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+}
+
+.client-video{
+width:100%;
+display:block;
+border-radius:20px;
+cursor:pointer;
+}
+@media (max-width:768px){
+.video-card{
+width:90%;
+margin:20px auto;
+}
+}
+.video-lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.video-lightbox video{
+max-width:85%;
+max-height:85%;
+border-radius:25px;
+padding:4px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+}
+
+.close-video{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+text-shadow:0 0 15px red, 0 0 30px blue;
+}
+.btn-book{
+position:relative;
+display:inline-block;
+padding:14px 40px;
+border-radius:30px;
+background:#1a1a1a; /* тъмно сиво вътре */
+color:white;
+text-decoration:none;
+font-weight:600;
+letter-spacing:1px;
+overflow:hidden;
+transition:0.3s;
+}
+
+/* НЕОН САМО ПО РАМКАТА */
+.btn-book::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:30px;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+}
+
+/* Hover ефект */
+.btn-book:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px red, 0 0 40px blue;
+}
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 40px;
+}
+
+.logo-wrapper{
+position:relative;
+width:80px;
+height:80px;
+border-radius:50%;
+overflow:hidden;
+}
+
+/* НЕОН РИНГ */
+.logo-wrapper::before{
+content:"";
+position:absolute;
+inset:0;
+padding:4px;
+border-radius:50%;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+}
+
+.logo-img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+background:#111;
+}.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 40px;
+}
+
+.logo-wrapper{
+position:relative;
+width:80px;
+height:80px;
+border-radius:50%;
+overflow:hidden;
+}
+
+/* НЕОН РИНГ */
+.logo-wrapper::before{
+content:"";
+position:absolute;
+inset:0;
+padding:4px;
+border-radius:50%;
+background:linear-gradient(90deg, red, blue, white, red);
+background-size:300%;
+animation:neonMove 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+}
+
+.logo-img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+background:#111;
+}
+@media (max-width:768px){
+
+.logo-wrapper{
+width:60px;
+height:60px;
+}
+
+.navbar{
+padding:10px 20px;
+}
+
+}@media (max-width:768px){
+
+.logo-wrapper{
+width:60px;
+height:60px;
+}
+
+.navbar{
+padding:10px 20px;
+}
+
+}

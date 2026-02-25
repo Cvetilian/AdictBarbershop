@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="logoto.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подстрижки - AdictBarbershop</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="logo">
+    <div class="logo-wrapper">
+    <img src="logoto.png" alt="Barber Logo" class="logo-img">
+</div>
+<div class="barber-pole">
+    <div class="pole-top"></div>
+    <div class="pole-body">
+        <div class="pole-inner"></div>
+    </div>
+    <div class="pole-bottom"></div>
+</div>
+<h2>AdictBarbershop</h2>
+</div>
+
+<nav id="nav">
+<ul>
+<li><a href="index.html">Начало</a></li>
+<li><a href="services.html">Подстрижки</a></li>
+<li><a href="clients.html">Клиенти</a></li>
+<li><a href="contact.html">Контакт</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+
+<video autoplay muted loop playsinline class="hero-video">
+<source src="cut4.mkv" type="video/mp4">
+</video><br><br>
+<h1 class="hero-title">Нашите Подстрижки</h1>
+
+<div class="cards-container">
+
+<div class="card">
+<img src="cuter1.jpg" alt="Fade" class="cut-image">
+<h2>Fade</h2>
+<p>Професионален skin fade със стил и прецизност.</p>
+<p class="price">Само 3€</p>
+</div>
+
+<div class="card">
+<img src="cutter2.jpg" alt="Buzz Cut" class="cut-image">
+<h2>Buzz Cut</h2>
+<p>Класическа и изчистена визия.</p>
+<p class="price">Само 3€</p>
+</div>
+
+<div class="card">
+<img src="cutter3.jpg" alt="Beard Trim" class="cut-image">
+<h2>Beard Trim</h2>
+<p>Оформяне и детайлна работа по брадата.</p>
+<p class="price">Само 3€</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 AdictBarbershop
+</footer>
+<div class="lightbox" id="lightbox">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img">
+</div>
+<script>
+const images = document.querySelectorAll(".cut-image");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close-btn");
+
+images.forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+    });
+});
+
+closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+    if(e.target !== lightboxImg){
+        lightbox.style.display = "none";
+    }
+});
+</script>
+</body>
+</html>
