@@ -977,4 +977,9 @@ height:60px;
 padding:10px 20px;
 }
 
+
+}
+.tiktok::before{
+background:linear-gradient(90deg, #ff0050, #00f2ea, #ff0050);
+background-size:300%;
 }
